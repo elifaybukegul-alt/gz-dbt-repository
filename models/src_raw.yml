@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw  # SQL'deki source('raw', ...) kısmındaki ilk parametre
+    database: veritabani_adin  # Kullandığın DB adı (Örn: analytics_db)
+    schema: raw_schema_adin    # Verilerin gerçekte durduğu şema adı
+    tables:
+      - name: product
+      - name: sales
+      - name: ship
