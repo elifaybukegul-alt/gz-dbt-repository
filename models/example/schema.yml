@@ -1,21 +1,44 @@
-
 version: 2
 
-models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+sources:
+  - name: raw
+    database: prismatic-sunup-481820-h5
+    schema: gz_raw_data
+    tables:
+      
+     - name: sales 
+       identifier: raw_gz_sales
+       description: sales of Greenweez / we have one row per product_id found in each orders_id
+       columns:
+           - name: date_date
+             description: date of purcha 
+           - name: orders_id
+             description: foreign key to ship
+           - name: pdt_id
+             description: foreign key to product
+           - name: revenue
+             description: the amount paid by the customer to purchase the product. revenue = quantity * selling_price
+           - name: quantity
+             description: the quantity of products purchased for a given order
+
+     - name: product
+       identifier: raw_gz_product
+       description: Greenweez'in ürünleri
+       columns:
+         - name: products_id
+           description: Birincil anahtar
+           tests:
+             - unique
+             - not_null
+
+     - name: ship
+       identifier: raw_gz_ship
+       description: Greenweez siparişleri için nakliye verileri
+       columns:
+        - name: orders_id
+          description: Birincil Anahtar
+          tests: 
+           - unique
+           - not_null
+         
