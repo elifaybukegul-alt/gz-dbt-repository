@@ -4,7 +4,7 @@ version: 2
 sources:
   - name: raw
     database: prismatic-sunup-481820-h5
-    schema: raw_schema_adın
+    schema: raw
     tables:
       
      - name: sales 
